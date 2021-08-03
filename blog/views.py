@@ -6,12 +6,12 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('Put here welcome page')
+    return render(request, 'blog/index.html')
 
 
 def posts(request):
     return HttpResponse('Put here all posts')
 
 
-def post(request, slug):
+def post_details(request, slug):
     return HttpResponse(f'put here post with slug: {slug}')
