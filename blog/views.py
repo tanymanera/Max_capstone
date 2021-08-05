@@ -10,8 +10,7 @@ def index(request):
 
 
 def posts(request):
-    return HttpResponse('Put here all posts')
+    return render(request, "blog/all-posts.html")
 
-
-def post_details(request, slug):
+def post_detail(request, slug):
     return HttpResponse(f'put here post with slug: {slug}')
