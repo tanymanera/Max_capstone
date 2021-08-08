@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse
+from django.http.response import Http404, HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -91,7 +91,10 @@ def posts(request):
     })
 
 def post_detail(request, slug):
-    identify_post = next(post for post in all_posts if post['slug'] == slug)
+    try:
+        identify_post = next(post for post in all_posts if post['slug'] == slug)
+    except StopIteration:
+        raise Http404('Blog does not exist')
     return render(request, "blog/post-detail.html", {
         "post": identify_post,
     })
